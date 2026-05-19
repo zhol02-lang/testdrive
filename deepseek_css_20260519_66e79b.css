@@ -1,0 +1,260 @@
+* {
+  box-sizing: border-box;
+}
+
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; 
+  margin: 0; 
+  padding: 0; 
+  background: #1a1a2e; 
+  color: #eee; 
+}
+
+main { 
+  display: grid; 
+  grid-template-columns: 1fr 320px; 
+  gap: 12px; 
+  padding: 12px; 
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+header { 
+  grid-column: 1 / -1; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  flex-wrap: wrap;
+  gap: 10px;
+  background: #16213e;
+  padding: 12px 20px;
+  border-radius: 8px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+#connection-status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+}
+
+.status.connected {
+  background: #0f3460;
+  color: #4ade80;
+}
+
+.status.disconnected {
+  background: #0f3460;
+  color: #ef4444;
+}
+
+#room-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#local-area { 
+  display: flex; 
+  gap: 12px; 
+  flex-wrap: wrap;
+}
+
+.video-wrapper { 
+  background: #16213e; 
+  padding: 12px; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  flex: 1;
+  min-width: 250px;
+}
+
+video { 
+  background: #000; 
+  display: block; 
+  width: 100%; 
+  border-radius: 6px; 
+  max-height: 300px;
+  object-fit: cover;
+}
+
+#sharedVideo {
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.controls, .sync-controls { 
+  margin-top: 10px; 
+  display: flex; 
+  gap: 6px; 
+  flex-wrap: wrap; 
+}
+
+.seek-control {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+}
+
+#seek-time {
+  flex: 1;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #0f3460;
+  background: #0a0f1f;
+  color: #fff;
+}
+
+#remotes { 
+  background: #16213e; 
+  padding: 12px; 
+  border-radius: 8px; 
+  min-height: 200px;
+}
+
+#peers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.peer { 
+  display: inline-block; 
+  margin: 6px; 
+  text-align: center; 
+}
+
+.peer video {
+  width: 180px;
+  border: 2px solid #0f3460;
+}
+
+.peer div:first-of-type {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #aaa;
+}
+
+#chat { 
+  background: #16213e; 
+  padding: 12px; 
+  border-radius: 8px; 
+  height: 600px; 
+  display: flex;
+  flex-direction: column;
+}
+
+#messages { 
+  flex: 1;
+  overflow-y: auto; 
+  border: 1px solid #0f3460; 
+  padding: 8px; 
+  background: #0a0f1f; 
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.message { 
+  padding: 6px 4px; 
+  border-bottom: 1px solid #1a2a4a; 
+  word-wrap: break-word;
+}
+
+.message:last-child {
+  border-bottom: none;
+}
+
+.chat-input-area {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+#name, #chat-input {
+  padding: 8px;
+  border: 1px solid #0f3460;
+  background: #0a0f1f;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+#name {
+  flex: 1;
+  min-width: 100px;
+}
+
+#chat-input {
+  flex: 2;
+  min-width: 150px;
+}
+
+button { 
+  padding: 6px 12px; 
+  background: #0f3460; 
+  color: white; 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #1a4a7a;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.host-btn.active {
+  background: #4ade80;
+  color: #1a2a4a;
+}
+
+.error-message {
+  color: #ef4444;
+  padding: 8px;
+  background: #2a1a1a;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+  
+  #local-area {
+    flex-direction: column;
+  }
+  
+  .peer video {
+    width: 140px;
+  }
+  
+  #chat {
+    height: 400px;
+  }
+  
+  header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  #room-controls {
+    justify-content: center;
+  }
+}

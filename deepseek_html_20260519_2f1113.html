@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Watch Together — Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Watch Together Demo</h1>
+      <div id="connection-status" class="status disconnected">⚫ Connecting...</div>
+      <div id="room-controls">
+        <input id="room-id" placeholder="room-id (anything)" />
+        <button id="join-btn">Create / Join Room</button>
+        <button id="share-url-btn" class="host-btn">🎬 Host Sync</button>
+        <button id="leave-btn" style="display:none;">🚪 Leave Room</button>
+      </div>
+    </header>
+
+    <section id="local-area">
+      <div class="video-wrapper">
+        <video id="localVideo" autoplay muted playsinline></video>
+        <div class="controls">
+          <button id="toggle-camera">📷 Turn Camera Off</button>
+          <button id="toggle-mic">🎤 Mute</button>
+          <button id="share-screen">🖥️ Share Screen</button>
+        </div>
+      </div>
+
+      <div class="video-wrapper">
+        <video id="sharedVideo" controls crossorigin="anonymous"></video>
+        <div class="sync-controls">
+          <input id="video-url" placeholder="Enter video URL (mp4, https) - try: http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" />
+          <button id="load-url">📂 Load URL</button>
+          <button id="play-url">▶️ Play</button>
+          <button id="pause-url">⏸️ Pause</button>
+          <div class="seek-control">
+            <input id="seek-time" type="number" placeholder="Seek to (seconds)" step="1" />
+            <button id="seek-url">⏩ Seek</button>
+          </div>
+        </div>
+        <div id="video-error" class="error-message" style="display:none;"></div>
+      </div>
+    </section>
+
+    <section id="remotes">
+      <h2>Remote Participants (<span id="participant-count">0</span>)</h2>
+      <div id="peers"></div>
+    </section>
+
+    <aside id="chat">
+      <h2>💬 Chat</h2>
+      <div id="messages" role="log" aria-label="Chat messages"></div>
+      <div class="chat-input-area">
+        <input id="name" placeholder="Your name (optional)" maxlength="50" />
+        <input id="chat-input" placeholder="Type a message..." maxlength="500" />
+        <button id="send-chat">Send</button>
+      </div>
+    </aside>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/client.js"></script>
+</body>
+</html>
